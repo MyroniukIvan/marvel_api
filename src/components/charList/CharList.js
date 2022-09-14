@@ -1,5 +1,5 @@
 import './charList.scss';
-import {Component} from "react";
+import {Component, createRef} from "react";
 import MarvelService from "../../services/MarvelServices";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
@@ -16,7 +16,9 @@ class CharList extends Component {
         charEnded: false
     }
 
+
     marvelService = new MarvelService();
+
 
     componentDidMount() {
         this.onRequest();
@@ -57,23 +59,40 @@ class CharList extends Component {
         })
     }
 
-    // Этот метод создан для оптимизации,
-    // чтобы не помещать такую конструкцию в метод render
+
+    itemRefs = [];
+
+    setRef = (ref) => {
+        this.itemRefs.push(ref)
+    }
+
+    focusOnItem = (id) => {
+        this.itemRefs.forEach(elem => elem.classList.remove("char__item_selected"))
+        this.itemRefs[id].classList.add('char__item_selected');
+        this.itemRefs[id].focus();
+    }
+
     renderItems(arr) {
-        const items = arr.map((item, i) => {
+        const items = arr.map((item, id) => {
             let imgStyle = {'objectFit': 'cover'};
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
                 imgStyle = {'objectFit': 'unset'};
             }
 
             return (
-                    <li
-                        className="char__item"
-                        key={item.id}
-                        onClick={() => this.props.onCharSelected(item.id)}>
-                        <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
-                        <div className="char__name">{item.name}</div>
-                    </li>
+                <li
+                    className="char__item"
+                    key={item.id}
+                    tabIndex={0}
+                    ref={this.setRef}
+
+                    onClick={() => {
+                        this.props.onCharSelected(item.id)
+                        this.focusOnItem(id)
+                    }}>
+                    <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
+                    <div className="char__name">{item.name}</div>
+                </li>
             )
         });
         // А эта конструкция вынесена для центровки спиннера/ошибки
