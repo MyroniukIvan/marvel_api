@@ -12,7 +12,7 @@ class CharList extends Component {
         loading: true,
         error: false,
         newItemLoading: false,
-        offset: 210,
+        offset: 200,
         charEnded: false
     }
 
@@ -44,7 +44,7 @@ class CharList extends Component {
         }
 
         this.setState(({offset, charList}) => ({
-            charList: [...charList, ...newCharList],
+            charList: [...charList , ...newCharList].slice(-9),
             loading: false,
             newItemLoading: false,
             offset: offset + 9,
