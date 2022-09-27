@@ -72,3 +72,25 @@
     right: -37px;
   }
 }
+
+/*
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  .randomchar {
+    &__block {
+      padding: 40px 30px;
+      display: grid;
+      grid-template-columns: 120px auto;
+      column-gap: 15px;
+      font-size: small;
+    }
+
+    &__img {
+      position: relative;
+      top: 25px;
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+  }
+}*/

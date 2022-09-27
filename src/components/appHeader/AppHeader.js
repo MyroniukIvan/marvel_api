@@ -1,11 +1,10 @@
 import './appHeader.scss';
 
 const AppHeader = () => {
-    const link = 'https://www.marvel.com/'
     return (
         <header className="app__header">
             <h1 className="app__title">
-                <a href={link}>
+                <a href='https://www.marvel.com/'>
                     <span>Marvel</span> information portal
                 </a>
             </h1>

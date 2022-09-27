@@ -82,3 +82,26 @@ main {
     opacity: 1
   }
 }
+
+
+
+/*
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }*/
+
+/*
+const device = {
+  mobileSmall: '(min-width: 320px)',
+  mobile: '(min-width: 375px)',
+  mobileLarge: '(min-width: 425px)',
+  tablet: '(min-width: 768px)',
+  laptop: '(min-width: 1024px)',
+  laptopLarge: '(min-width: 1440px)',
+  desktop: '(min-width: 2560px)',
+}*/
