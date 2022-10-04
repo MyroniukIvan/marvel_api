@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import ComicsList from "../comicsList/ComicsList";
+import AppBanner from "../appBanner/AppBanner";
 
 const ComicsPage = (props) => {
     const [selectedChar, setChar] = useState(null);
@@ -13,6 +14,7 @@ const ComicsPage = (props) => {
     }
     return (
         <>
+            <AppBanner/>
             <ComicsList onComicsSelected={onComicsSelected} onCharSelected={onCharSelected}/>
         </>
     );

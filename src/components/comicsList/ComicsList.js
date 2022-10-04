@@ -41,6 +41,15 @@ const ComicsList = (props) => {
         setComicsEnded(ended);
     }
 
+    const itemRefs = useRef([]);
+
+    const focusOnItem = (id) => {
+        itemRefs.current.forEach(item => item.classList.remove('char__item_selected'));
+        itemRefs.current[id].classList.add('char__item_selected');
+        itemRefs.current[id].focus();
+    }
+
+
 
     function renderItems(arr) {
         const items = arr.map((item, i) => {
@@ -50,6 +59,11 @@ const ComicsList = (props) => {
             }
             return (
                 <li key={item.id}
+                    ref={el => itemRefs.current[i] = el}
+                    onClick={() => {
+                        props.onComicsSelected(item.id)
+                        focusOnItem(i)
+                    }}
                     className="comics__item">
                     <a href={item.url}>
                         <img style={imgStyle}
