@@ -1,6 +1,15 @@
 import './appHeader.scss';
+import {
+    NavLink
+} from "react-router-dom";
 
 const AppHeader = () => {
+
+    const style = {
+        transition: "0.3s transform",
+        cursor: "pointer",
+    }
+
     return (
         <header className="app__header">
             <h1 className="app__title">
@@ -10,9 +19,17 @@ const AppHeader = () => {
             </h1>
             <nav className="app__menu">
                 <ul>
-                    <li><a href="#">Characters</a></li>
+                    <li><NavLink style={
+                        (isActive) => {
+                            return isActive ? style : undefined
+                        }
+                    } to="/">Characters</NavLink></li>
 
-                    <li><a href="#">Comics</a></li>
+                    <li><NavLink style={
+                        (isActive) => {
+                            return isActive ? style : undefined
+                        }
+                    } to="/comics">Comics</NavLink></li>
                 </ul>
             </nav>
         </header>
