@@ -2,7 +2,7 @@ import './comicsList.scss';
 import {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import useMarvelService from "../../services/UseMarvelService";
-
+import {Link} from "react-router-dom";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 
@@ -52,7 +52,7 @@ const ComicsList = (props) => {
 
 
     function renderItems(arr) {
-        const items = arr.map((item, i) => {
+        const items = arr.map((item, i)  => {
             let imgStyle = {'objectFit': 'contain'};
             if (item.thumbnail === 'https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
                 imgStyle = {'objectFit': 'unset'};
@@ -65,12 +65,12 @@ const ComicsList = (props) => {
                         focusOnItem(i)
                     }}
                     className="comics__item">
-                    <a href={item.url}>
+                    <Link to={`/comics/${item.id}`}>
                         <img style={imgStyle}
                              src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>
                         <div className="comics__item-price">{item.price}</div>
-                    </a>
+                    </Link>
                 </li>
 
             )

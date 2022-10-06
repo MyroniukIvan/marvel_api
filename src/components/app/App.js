@@ -1,7 +1,6 @@
 import AppHeader from "../appHeader/AppHeader";
 
-import CharPage from "../pages/CharPage";
-import ComicsPage from "../pages/ComicsPage";
+import {ComicsPage,Page404, SingleComicPage,CharPage} from "../pages";
 
 import {
     Route, Routes, BrowserRouter
@@ -15,10 +14,14 @@ const App = () => {
                 <AppHeader/>
                 <main>
                     <Routes>
+                        <Route path={"*"} element={<Page404/>}/>
                         <Route path={'/'}>
                             <Route index element={<CharPage/>}/>
                             <Route path={"comics"}>
                                 <Route index element={<ComicsPage/>}/>
+                            </Route>
+                            <Route path={'/comics/:comicId'}>
+                                <Route index element={<SingleComicPage/>}/>
                             </Route>
                         </Route>
                     </Routes>
