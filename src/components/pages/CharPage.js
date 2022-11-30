@@ -4,6 +4,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import decoration from "../../resources/img/vision.png";
+import SearchCharacter from "../searchCharacter/SearchCharacter";
 
 const CharPage = (props) => {
     const [selectedChar, setChar] = useState(null);
@@ -16,8 +17,7 @@ const CharPage = (props) => {
         setComics(id)
     }
 
-    return (
-        <div>
+    return (<div>
             <ErrorBoundary>
                 <RandomChar/>
             </ErrorBoundary>
@@ -28,10 +28,12 @@ const CharPage = (props) => {
                 <ErrorBoundary>
                     <CharInfo charId={selectedChar}/>
                 </ErrorBoundary>
+                <ErrorBoundary>
+                    <SearchCharacter/>
+                </ErrorBoundary>
                 <img className="bg-decoration" src={decoration} alt="vision"/>
             </div>
-        </div>
-    );
+        </div>);
 }
 
 export default CharPage;
