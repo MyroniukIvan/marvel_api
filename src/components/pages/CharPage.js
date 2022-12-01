@@ -18,22 +18,24 @@ const CharPage = (props) => {
     }
 
     return (<div>
+        <ErrorBoundary>
+            <RandomChar/>
+        </ErrorBoundary>
+        <div className="char__content">
             <ErrorBoundary>
-                <RandomChar/>
+                <CharList onCharSelected={onCharSelected}/>
             </ErrorBoundary>
-            <div className="char__content">
-                <ErrorBoundary>
-                    <CharList onCharSelected={onCharSelected}/>
-                </ErrorBoundary>
+            <div>
                 <ErrorBoundary>
                     <CharInfo charId={selectedChar}/>
                 </ErrorBoundary>
                 <ErrorBoundary>
                     <SearchCharacter/>
                 </ErrorBoundary>
-                <img className="bg-decoration" src={decoration} alt="vision"/>
             </div>
-        </div>);
+            <img className="bg-decoration" src={decoration} alt="vision"/>
+        </div>
+    </div>);
 }
 
 export default CharPage;

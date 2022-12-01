@@ -1,11 +1,12 @@
 import './charInfo.scss';
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
 import PropTypes from 'prop-types';
 import useMarvelService from "../../services/UseMarvelService";
+import SearchCharacter from "../searchCharacter/SearchCharacter";
 
 const CharInfo = (props) => {
 
